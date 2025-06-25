@@ -226,7 +226,6 @@ export const secretRouter = router({
       const secrets = await ctx.prisma.secret.findMany({
         where: {
           creatorId: ctx.user.id,
-          expiresAt: { gt: new Date() },
         },
         orderBy: { createdAt: "desc" },
       });
