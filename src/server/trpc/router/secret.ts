@@ -119,6 +119,8 @@ export const secretRouter = router({
 
       if (password !== undefined) {
         updateData.password = password ? await bcrypt.hash(password, 10) : null;
+      } else {
+        updateData.password = null;
       }
 
       await ctx.prisma.secret.update({

@@ -212,7 +212,7 @@ export function EditSecretDialog({
             errors={errors}
             showPassword={showPassword}
             onTogglePassword={() => setShowPassword(!showPassword)}
-            passwordHelperText="Leave empty to keep existing password or remove protection"
+            passwordHelperText="Leave empty to remove protection"
             color="#f59e0b"
           />
 
