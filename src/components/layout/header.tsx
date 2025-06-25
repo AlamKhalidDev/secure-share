@@ -14,13 +14,14 @@ import {
 } from "@mui/material";
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useState } from "react";
 import { AccountCircle, Security } from "@mui/icons-material";
 
 export function Header() {
   const { data: session, status } = useSession();
   const router = useRouter();
+  const pathname = usePathname();
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -100,14 +101,19 @@ export function Header() {
           </Box>
         ) : (
           <Box sx={{ display: "flex", gap: 1 }}>
-            <Button color="inherit" component={Link} href="/auth/login">
+            <Button
+              color="inherit"
+              component={Link}
+              href="/auth/login"
+              variant={pathname === "/auth/login" ? "outlined" : "text"}
+            >
               Login
             </Button>
             <Button
-              variant="outlined"
               color="inherit"
               component={Link}
               href="/auth/register"
+              variant={pathname === "/auth/register" ? "outlined" : "text"}
             >
               Register
             </Button>
